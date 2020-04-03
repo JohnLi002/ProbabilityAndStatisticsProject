@@ -21,7 +21,6 @@ sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 #Question 1B: Create a 10 Bin Histogram
 hist(projectData$Minimum, freq = F, breaks = 10)
-summary(projectData$Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 #Question 1C: Create a box plot of a variable
 boxplot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., names = c("Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km."))
@@ -31,4 +30,16 @@ plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 ##Why we used scatter plot. A pie chart would not make sense because we are not looking at the overall total of sea ice coverage but rather
 ##Instances that happen. At the same time we are not using bar graph because it would be a little easier to see the overall trend with a
 ##scatter plot
+
+#Question 2C: R (Correlation Coefficient)
+plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+R = cor(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+RSquared = R*R
+
+plot(Temperature.Anomalies.based.on.20th.century.averages...C.)
+
+#Question 2E
+qqnorm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)#creates a plot with theoretical quantiles vs your actual data points
+qqline(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)#overlays a perfect distribution curve
+
 
