@@ -4,7 +4,7 @@ projectData <- read.table("Sea Ice and Temperature Data.txt", sep = ",", header 
 attach(projectData)
 
 #Question 1A: Find the mean, median, mode, variance, and standard deviation
-Summary(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+summary(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 ##To find the mode
@@ -12,7 +12,7 @@ getmode <-function(v){
   uniqv <-unique(v)
   uniqv[which.max(tabulate(match(v,uniqv)))]
 }
-result <- getmode(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+mode <- getmode(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 print(result)
 
 
