@@ -31,6 +31,16 @@ plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 ##Instances that happen. At the same time we are not using bar graph because it would be a little easier to see the overall trend with a
 ##scatter plot
 
+#Question 2A: Scatter plot
+
+summary(lm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.~Temperature.Anomalies.based.on.20th.century.averages...C.,))
+##The intercept will be 7.7128 and the slope will be -3.1813
+##So the trendline is
+plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., main="Sea Ice vs Temperature",
+     xlab="Temperature (C)", ylab="Amount of Sea Ice",)
+abline(lm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.~Temperature.Anomalies.based.on.20th.century.averages...C.,))
+
+
 #Question 2C: R (Correlation Coefficient)
 plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 R = cor(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
