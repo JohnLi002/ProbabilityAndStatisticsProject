@@ -13,20 +13,22 @@ getmode <-function(v){
   uniqv[which.max(tabulate(match(v,uniqv)))]
 }
 mode <- getmode(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
-print(result)
+print(mode)
 
 
 ##Standard Deviation
 sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 #Question 1B: Create a 10 Bin Histogram
-hist(projectData$Minimum, freq = F, breaks = 10)
+hist(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., freq = F, breaks = 10, main = "Histogram of Minimum Arctic Sea Ice Extent")
 
 #Question 1C: Create a box plot of a variable
-boxplot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., names = c("Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km."))
+boxplot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., names = c("Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km."), col = c("red"))
+
 
 #Question 1D: Chose one way to graph and explain why
-plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., main = "Minimum Sea Ice Extent per Year", xlab = "Number of Years since 1980",
+     ylab = "Minimum Arctic Sea Ice Extent (Millions of Squared km)", pch = 21, bg = c("blue"))
 ##Why we used scatter plot. A pie chart would not make sense because we are not looking at the overall total of sea ice coverage but rather
 ##Instances that happen. At the same time we are not using bar graph because it would be a little easier to see the overall trend with a
 ##scatter plot
@@ -35,9 +37,11 @@ plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 summary(lm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.~Temperature.Anomalies.based.on.20th.century.averages...C.,))
 ##The intercept will be 7.7128 and the slope will be -3.1813
-##So the trendline is
-plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., main="Sea Ice vs Temperature",
-     xlab="Temperature (C)", ylab="Amount of Sea Ice",)
+##So the trendline is [[y = -3.1813x + 7.7128]]
+plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., 
+     main="Mnimum Sea Ice Extent vs Temperature Anomaly",
+     xlab="Temperature Anomaly based on 20th Century Average (C)", 
+     ylab="Minimum Sea Ice Coverage (Millions of Squared km)", pch = 21, bg = c("Purple"))
 abline(lm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.~Temperature.Anomalies.based.on.20th.century.averages...C.,))
 
 
