@@ -20,14 +20,14 @@ print(mode)
 sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 #Question 1B: Create a 10 Bin Histogram
-hist(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., freq = F, breaks = 10, main = "Histogram of Minimum Arctic Sea Ice Extent")
+hist(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., freq = F, breaks = 10, main = "Histogram of Minimum Arctic Sea Ice Extent", xlab = "Minimum Arctic Sea Ice Extent (Millions of Squared km)")
 
 #Question 1C: Create a box plot of a variable
 boxplot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., names = c("Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km."), col = c("red"))
 
 
 #Question 1D: Chose one way to graph and explain why
-plot(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., main = "Minimum Sea Ice Extent per Year", xlab = "Number of Years since 1980",
+plot(Year, Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., main = "Minimum Sea Ice Extent per Year", xlab = "Years",
      ylab = "Minimum Arctic Sea Ice Extent (Millions of Squared km)", pch = 21, bg = c("blue"))
 ##Why we used scatter plot. A pie chart would not make sense because we are not looking at the overall total of sea ice coverage but rather
 ##Instances that happen. At the same time we are not using bar graph because it would be a little easier to see the overall trend with a
@@ -42,18 +42,59 @@ plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.S
      main="Mnimum Sea Ice Extent vs Temperature Anomaly",
      xlab="Temperature Anomaly based on 20th Century Average (C)", 
      ylab="Minimum Sea Ice Coverage (Millions of Squared km)", pch = 21, bg = c("Purple"))
+
+#Question 2B
 abline(lm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.~Temperature.Anomalies.based.on.20th.century.averages...C.,))
 
 
 #Question 2C: R (Correlation Coefficient)
-plot(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 R = cor(Temperature.Anomalies.based.on.20th.century.averages...C., Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+
+#Question 2D: R Squared (Coefficient of Determination)
 RSquared = R*R
 
-plot(Temperature.Anomalies.based.on.20th.century.averages...C.)
 
 #Question 2E
 qqnorm(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)#creates a plot with theoretical quantiles vs your actual data points
 qqline(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)#overlays a perfect distribution curve
+
+
+#Questions 3a: Minimum Arctic Sea Ice
+n_X = nrow(projectData)
+x_bar_X = mean(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+std_dev_X = sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+population_std_dev_X = sqrt(((std_dev_Xstd_dev_X)(n_X-1))/n_X)
+z_critical_value_95 = qnorm(1-(.05/2))#Critical Value 95% alpha =0.05
+
+#Margin of Error
+z_margin_of_error_95 = (z_critical_value_95*(population_std_dev_X/sqrt(n_X)))
+
+#Confidence Interval
+right_bound_z_95 = x_bar_X + z_margin_of_error_95
+left_bound_z_95 = x_bar_X - z_margin_of_error_95
+cat("The 95% Confidence Interval for the true population mean Sea Ice is: (", left_bound_z_95,",", right_bound_z_95)
+
+#Questions 3b: Temperature Anomaly
+n_Q1 = nrow(myFinalData)#sets sample size
+x_bar_Q1 = mean(Temperature.Anomalies.based.on.20th.century.averages...C.)#Finds the mean
+std_dev_Q1 = sd(Temperature.Anomalies.based.on.20th.century.averages...C.)#Finds standard diviation
+population_std_dev_q1 = sqrt(((std_dev_Q1)(std_dev_Q1)(n_Q1-1))/n_Q1)#Finds the population SD [needed for z]
+z_critical_value_95 = qnorm(1-(.05/2)) #Finds critical value for 95% (alpha = 0.05) --> 1-(alpha/2)
+
+#Margin of Error
+z_margin_of_error_95 = (z_critical_value_95*(population_std_dev_q1/sqrt(n_Q1)))#Finds the margin of error for 95% CI
+
+#Confidence Interval
+right_bound_z_95 = x_bar_Q1 + z_margin_of_error_95
+left_bound_z_95 = x_bar_Q1 - z_margin_of_error_95
+cat("We are 95% confident for the true population mean temperature anomilies of the artic is: (",left_bound_z_95,",",right_bound_z_95,")")
+
+
+#EXTRA
+##Graphing
+plot(Year, Temperature.Anomalies.based.on.20th.century.averages...C., main = "Minimum Sea Ice Extent per Year", xlab = "Year",
+     ylab = "Temperature Anomaly based on 20th Century Average (C)", pch = 21, bg = c("blue"))
+boxplot(Temperature.Anomalies.based.on.20th.century.averages...C., names = c("Temperature.Anomalies.based.on.20th.century.averages...C."), col = c("red"))
+
 
 
