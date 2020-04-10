@@ -5,6 +5,11 @@ attach(projectData)
 
 #Question 1A: Find the mean, median, mode, variance, and standard deviation
 summary(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+
+##Variance
+var(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
+
+##Standard Deviation
 sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 ##To find the mode
@@ -14,10 +19,6 @@ getmode <-function(v){
 }
 mode <- getmode(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 print(mode)
-
-
-##Standard Deviation
-sd(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km.)
 
 #Question 1B: Create a 10 Bin Histogram
 hist(Minimum.Arctic.Sea.Ice.Extent..Millions.of.squared.km., freq = F, breaks = 10, main = "Histogram of Minimum Arctic Sea Ice Extent", xlab = "Minimum Arctic Sea Ice Extent (Millions of Squared km)")
